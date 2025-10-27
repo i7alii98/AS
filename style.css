@@ -1,0 +1,154 @@
+.awards-section {
+    padding: 40px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+
+.section-title {
+    font-size: 2em;
+    color: #333;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+    display: inline-block; 
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px; 
+    background-color: #007bff; 
+}
+
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    overflow: hidden; 
+    position: relative;
+    border-radius: 8px;
+    padding: 0 50px; 
+}
+
+
+.slider-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    width: 100%; 
+}
+
+
+.slide {
+    min-width: calc(100% / 4); 
+    flex-shrink: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.logo-wrapper {
+    position: relative;
+    width: 150px; 
+    height: 150px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+
+.overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    color: rgb(255, 255, 255); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+    font-size: 0.9em;
+}
+
+
+.logo-wrapper:hover .overlay-text {
+    opacity: 1; 
+}
+
+.logo-wrapper:hover img {
+    filter: brightness(0.5); 
+}
+
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #007bff;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 15px 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    font-size: 1.5em;
+    line-height: 0;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.nav-button:hover {
+    opacity: 1;
+}
+
+.prev-button {
+    left: 0;
+}
+
+.next-button {
+    right: 0;
+}
+
+
+.slider-dots {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #007bff;
+}
