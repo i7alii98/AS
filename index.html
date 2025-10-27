@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahlia School - Excellence in Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#2563EB',
+                        'light-blue': '#F3F4F6',
+                        'dark-bg': '#1F2937',
+                        'success-green': '#10B981', // New color for active button
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<style>
+    
+.awards-section {
+    padding: 40px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+
+.section-title {
+    font-size: 2em;
+    color: #333;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+    display: inline-block; 
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px; 
+    background-color: #007bff; 
+}
+
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    overflow: hidden; 
+    position: relative;
+    border-radius: 8px;
+    padding: 0 50px; 
+}
+
+
+.slider-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    width: 100%; 
+}
+
+
+.slide {
+    min-width: calc(100% / 4); 
+    flex-shrink: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.logo-wrapper {
+    position: relative;
+    width: 150px; 
+    height: 150px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+
+.overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    color: rgb(255, 255, 255); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+    font-size: 0.9em;
+}
+
+
+.logo-wrapper:hover .overlay-text {
+    opacity: 1; 
+}
+
+.logo-wrapper:hover img {
+    filter: brightness(0.5); 
+}
+
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #007bff;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 15px 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    font-size: 1.5em;
+    line-height: 0;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.nav-button:hover {
+    opacity: 1;
+}
+
+.prev-button {
+    left: 0;
+}
+
+.next-button {
+    right: 0;
+}
+
+
+.slider-dots {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #007bff;
+}
+</style>
+<header class="sticky top-0 z-50 bg-white shadow-lg border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20"> 
+            
+            <a href="/" class="flex items-center space-x-3"> 
+                <img src="https://cdn.discordapp.com/attachments/1424389481699606558/1432358287755579554/Ahlia_School_Logo_-_Small.png?ex=6900c31b&is=68ff719b&hm=bd769d07b4e93522e2902abf54b63db430eaaf7bae7e98d6b38fa0228b8852ad&" 
+                     alt="Ahlia School Logo" 
+                     class="h-12 w-auto">
+              
+            </a>
+
+            <nav class="hidden md:flex space-x-4 lg:space-x-6 text-sm">
+                
+                <div class="relative group">
+                    <a href="/About-us" class="flex items-center space-x-1 uppercase text-gray-700 hover:text-blue-600 font-medium transition duration-200 py-1">
+                        <span>About us</span>
+                        <svg class="w-3 h-3 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 mt-0 w-48 bg-white rounded-md shadow-xl opacity-0 group-hover:opacity-100 group-hover:visible transition duration-300 invisible pt-2 z-10">
+                        <a href="/School-profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">School Profile</a>
+                        <a href="/Vision-mission" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Vision & Mission</a>
+                        <a href="/Board-of-trustees" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Board of Trustees</a>
+                        <a href="/directors-message" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Director's Message</a>
+                        <a href="/Facilities" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Facilities</a>
+                        <a href="/Balanced-curriculum" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Curriculum</a>
+                    </div>
+                </div>
+                
+                <div class="relative group">
+                    <a href="/" class="flex items-center space-x-1 uppercase text-gray-700 hover:text-blue-600 font-medium transition duration-200 py-1">
+                        <span>Admission</span>
+                        <svg class="w-3 h-3 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 mt-0 w-48 bg-white rounded-md shadow-xl opacity-0 group-hover:opacity-100 group-hover:visible transition duration-300 invisible pt-2 z-10">
+                        <a href="/Admission-guide" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Admission guide</a>
+                        <a href="/Academic-policies" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Academic policies</a>
+                        <a href="/Registeration-forms" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Download Forms</a>
+                        <a href="/Assessments" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Assessments</a>
+                    </div>
+                </div>
+
+                
+                
+                <div class="relative group">
+                    <a href="/" class="flex items-center space-x-1 uppercase text-gray-700 hover:text-blue-600 font-medium transition duration-200 py-1">
+                        <span>As Community</span>
+                        <svg class="w-3 h-3 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 mt-0 w-48 bg-white rounded-md shadow-xl opacity-0 group-hover:opacity-100 group-hover:visible transition duration-300 invisible pt-2 z-10">
+                        <a href="/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">PTA</a>
+                        <a href="/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">PTA Members</a>
+                        <a href="/n" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Useful links for students</a>
+                    </div>
+                </div>
+                
+    
+
+                <div class="relative group">
+                    <a href="/Contact-us" class="flex items-center space-x-1 uppercase text-gray-700 hover:text-blue-600 font-medium transition duration-200 py-1">
+                        <span>CONTACT US</span>
+                        <svg class="w-3 h-3 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 mt-0 w-48 bg-white rounded-md shadow-xl opacity-0 group-hover:opacity-100 group-hover:visible transition duration-300 invisible pt-2 z-10">
+                        <a href="/Contact-us" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Contact Details</a>
+                        <a href="/Location-map" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Location Map</a>
+                    </div>
+                </div>
+                
+               
+
+                <a href="/schedules.html" class="uppercase text-blue-600 font-semibold border-b-2 border-blue-600 py-1">Schedules & Plans</a>
+                
+            </nav>
+            
+            <a href="#" class="hidden lg:block bg-blue-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-blue-700 transition duration-300 shadow-lg transform hover:scale-105">
+                Apply Now
+            </a>
+
+            <button class="md:hidden text-gray-800 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section id="home" class="hero-bg h-[60vh] md:h-[80vh] flex items-center justify-center text-center relative" style="background-image: url('/img//12_0.jpg'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="z-10 p-6 max-w-4xl">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white mb-4 leading-tight">
+                Preparing the Leaders of Tomorrow
+            </h1>
+            <p class="text-xl text-gray-200 mb-10 hidden sm:block">
+                A balanced, broad, and meaningful academic curriculum striving for excellence.
+            </p>
+            <a href="#academics" class="bg-primary-blue text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300 shadow-xl">
+                Explore Our Programs
+            </a>
+        </div>
+    </section>
+
+    <section id="vision" class="py-20 bg-light-blue">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="section-title">
+                Our Vision & Mission
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl card-shadow flex flex-col items-center text-left hover:shadow-xl transition duration-300">
+                    <div class="icon-circle bg-blue-100 text-primary-blue w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Our Vision</h3>
+                    <p class="text-gray-600">To educate our young within a happy, caring and culturally diverse environment so that they are able to achieve their full potential while building self-esteem and developing healthy minds.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl card-shadow flex flex-col items-center text-left hover:shadow-xl transition duration-300">
+                    <div class="icon-circle bg-green-100 text-success-green w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Our Mission</h3>
+                    <p class="text-gray-600">Ahlia School offers a balanced, broad, and meaningful academic curriculum striving for academic excellence, supported by a co-curricular program for holistic learner development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="lg:order-1">
+                    <h2 class="section-title">
+                        About Ahlia School
+                    </h2>
+                    <p class="text-gray-600 mb-4">Established in 2010 in Saar, Kingdom of Bahrain, Ahlia School has grown to serve students from Pre-school through Grade 12, following the American curriculum combined with high-quality international education standards.</p>
+                    <div class="inline-block bg-primary-blue text-white font-bold py-2 px-6 rounded-lg text-lg mb-8 shadow-md">
+                        2010 Established
+                    </div>
+                    <a href="#" class="inline-block bg-primary-blue text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg">
+                        Learn More About Us
+                    </a>
+                </div>
+                <div class="lg:order-2">
+                    <img src="/img/Bahrain1.jpg" alt="School Facilities" class="rounded-xl shadow-2xl w-full h-auto object-cover">
+                </div>
+            </div>
+          
+            
+            </div>
+
+            <section class="awards-section">
+                <h2 class="section-title">Awards & Accreditations</h2>
+                
+                <div class="slider-container">
+                    <button class="nav-button prev-button" aria-label="Previous Slide">&lt;</button>
+                    
+                    <div class="slider-track">
+                        <div class="slide">
+                            <div class="logo-wrapper">
+                                <img src="https://cdn.discordapp.com/attachments/1424389481699606558/1432358288275669052/microsoft-showcase-school-2025-2026_2.png?ex=6900c31b&is=68ff719b&hm=35919b05dbb7b27af9cc26ccafa2a93a474765533a2c1bc4b537fad518b4f327&" alt="AoBSO Logo">
+                                <div class="overlay-text">🏫 Microsoft Showcasing School 2024–2025</div>
+                            </div>
+                        </div>
+                        
+                        <div class="slide">
+                            <div class="logo-wrapper">
+                                <img src="https://cdn.discordapp.com/attachments/1424389481699606558/1432358228947239002/image.png?ex=6900c30d&is=68ff718d&hm=bc396b72869d8a7504a72d72fec500592c9f387cc565d6f4f38c4967cd714d3d&" alt="Duke of Edinburgh's Award Logo">
+                                <div class="overlay-text">🎓 MSA Accreditation</div>
+                            </div>
+                        </div>
+                        
+                        <div class="slide">
+                            <div class="logo-wrapper">
+                                <img src="https://internationalschooldelft.com/wp-content/uploads/2020/05/ib-world-school-logo-2-colour.png" alt="The Schools Index Logo">
+                                <div class="overlay-text">🌍 IBDP School</div>
+                            </div>
+                        </div>
+                        
+                        <div class="slide">
+                            <div class="logo-wrapper">
+                                <img src="https://www.bayanschool.edu.bh/cms/upload/img/accreditation%20logos/BQA.jpg" alt="Alliance for Sustainable Schools Logo">
+                                <div class="overlay-text">🏅 BQA (Good)</div>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="logo-wrapper">
+                                <img src="https://www.mofne.gov.bh/media/qnaebdmp/bahrain-2030-colored.svg" alt="Alliance for Sustainable Schools Logo">
+                                <div class="overlay-text"></div>
+                            </div>
+                        </div>
+                        </div>
+                    
+                    <button class="nav-button next-button" aria-label="Next Slide">&gt;</button>
+                </div>
+                
+                <div class="slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                </div>
+            </section>
+
+            <section id="academics" class="py-20 bg-light-blue">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="section-title">
+                        Academic Programs
+                    </h2>
+                    <p class="text-gray-600 mb-12 max-w-2xl mx-auto">We offer a balanced education in English and Arabic across all disciplines, ensuring comprehensive student development.</p>
+            
+                    <div class="grid lg:grid-cols-3 gap-8">
+                        
+                        <div class="rounded-xl overflow-hidden shadow-2xl bg-white text-left transition duration-300 hover:shadow-primary-blue/50">
+                            <img src="https://www.ahliaschool.edu.bh/sites/default/files/Untitled-2_2.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/800000/FFFFFF?text=Preschool+Image';" alt="Preschool students playing" class="w-full h-56 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-3">Preschool <span class="text-sm font-normal text-primary-blue">(Ages 3-5)</span></h3>
+                                <p class="text-gray-600 mb-4 text-base">
+                                    Our Preschool is designed to meet the needs of young children in a bilingual environment. The curriculum promotes developmental activities that support emotional, social, physical, and cognitive growth.
+                                </p>
+                                <a href="/academics/preschool.html" class="text-primary-blue font-semibold hover:text-blue-700 transition duration-150 inline-flex items-center">
+                                    Read More
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="rounded-xl overflow-hidden shadow-2xl bg-white text-left transition duration-300 hover:shadow-primary-blue/50">
+                            <img src="https://www.ahliaschool.edu.bh/sites/default/files/Top1_0.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/900C3F/FFFFFF?text=Elementary+Image';" alt="Elementary students collaborating" class="w-full h-56 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-3">Elementary School <span class="text-sm font-normal text-success-green">(Grades 1-5)</span></h3>
+                                <p class="text-gray-600 mb-4 text-base">
+                                    Our Elementary curriculum builds on early foundations, encouraging curiosity, collaboration, and problem-solving. Students gain essential skills in a safe and caring community.
+                                </p>
+                                <a href="/academics/primary.html" class="text-primary-blue font-semibold hover:text-blue-700 transition duration-150 inline-flex items-center">
+                                    Read More
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+            
+                        <div class="rounded-xl overflow-hidden shadow-2xl bg-white text-left transition duration-300 hover:shadow-primary-blue/50">
+                            <img src="https://www.ahliaschool.edu.bh/sites/default/files/Top1.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/581845/FFFFFF?text=Secondary+Image';" alt="Secondary students studying in library" class="w-full h-56 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-3">Secondary School <span class="text-sm font-normal text-purple-500">(Grades 6-12)</span></h3>
+                                <p class="text-gray-600 mb-4 text-base">
+                                    Our Secondary program promotes academic excellence, critical thinking, and personal growth, preparing students for higher education and global citizenship.
+                                </p>
+                                <a href="/academics/middle.html" class="text-primary-blue font-semibold hover:text-blue-700 transition duration-150 inline-flex items-center">
+                                    Read More
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+            
+                    </div>
+
+                
+         
+    </section>
+   
+</section>
+    <section id="news" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-center mb-12">News & Updates</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:-translate-y-1 hover:shadow-2xl">
+                    <img src="https://www.ahliaschool.edu.bh/sites/default/files/styles/news-listing-452px-290px/public/Picture1_0.jpg?itok=A7O781VS" alt="School Olympics tournament" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <p class="text-gray-500 text-sm mb-2">November 10, 2024</p>
+                        <h3 class="text-xl font-semibold text-gray-800 leading-tight">School Olympics Tournament</h3>
+                        <a href="#" class="mt-4 inline-flex items-center text-primary-blue hover:text-blue-700 transition duration-150">
+                            Read More
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+    
+    
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:-translate-y-1 hover:shadow-2xl">
+                    <img src="https://www.ahliaschool.edu.bh/sites/default/files/styles/news-listing-452px-290px/public/1222.jpg?itok=zlGfQNsd" alt="Graduation ceremony" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <p class="text-gray-500 text-sm mb-2">October 25, 2024</p>
+                        <h3 class="text-xl font-semibold text-gray-800 leading-tight">Fifth Batch Graduation Ceremony</h3>
+                        <a href="#" class="mt-4 inline-flex items-center text-primary-blue hover:text-blue-700 transition duration-150">
+                            Read More
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:-translate-y-1 hover:shadow-2xl">
+                    <img src="https://www.ahliaschool.edu.bh/sites/default/files/styles/news-listing-452px-290px/public/KG2%20Graduation%201.jpg?itok=WngZpeV2" alt="Graduation ceremony" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <p class="text-gray-500 text-sm mb-2">October 25, 2024</p>
+                        <h3 class="text-xl font-semibold text-gray-800 leading-tight">KG2 Graduation</h3>
+                        <a href="#" class="mt-4 inline-flex items-center text-primary-blue hover:text-blue-700 transition duration-150">
+                            Read More
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="flex justify-center mt-12">
+                <a href="/news.html" class="px-6 py-3 border-2 border-primary-blue text-primary-blue font-bold rounded-xl hover:bg-primary-blue hover:text-white transition duration-300">View All News</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+<div id="announcement-modal" class="fixed inset-0 z-[100] bg-black bg-opacity-70 hidden flex items-center justify-center p-4 transition-opacity duration-300">
+    <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full transform transition-all duration-300 scale-95 opacity-0" id="modal-content-container">
+        <div class="bg-primary-blue text-white p-4 rounded-t-xl flex justify-between items-center">
+            <h3 class="text-xl font-bold">Important Announcement!</h3>
+            <button onclick="closeModal()" class="text-white hover:text-gray-200 p-1 rounded-full hover:bg-blue-600 transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="p-6">
+            <img src="https://www.ahliaschool.edu.bh/sites/default/files/styles/news-listing-452px-290px/public/Untitled%20design%20%281%29.jpg?itok=GFGC7EJc" onerror="this.onerror=null; this.src='https://placehold.co/800x400/2563EB/FFFFFF?text=Important+School+Update';" alt="Announcement Graphic" class="w-full rounded-lg mb-4 shadow-md">
+            
+            <h4 class="text-2xl font-bold text-gray-800 mb-3">Arab Reading Challenge Champion - 2nd Place winner</h4>
+            <p class="text-gray-600 mb-4">
+                A proud moment for Ahlia School. Mohammed Jassim Mubarak from Al Ahlia School has made history, securing 2nd place in the Arab Reading Challenge — outshining over 32 million participants from 50 countries. His achievement reflects Bahrain’s continued excellence in education and the nation’s commitment to nurturing a generation that loves knowledge, language, and learning.
+            </p>
+            </div>
+    </div>
+    
+</div>
+<script>
+    const modal = document.getElementById('announcement-modal');
+    const modalContent = document.getElementById('modal-content-container');
+
+    const openModal = () => {
+        // Show the backdrop
+        modal.classList.remove('hidden');
+        
+        // Use a slight delay to trigger the CSS transition for content
+        setTimeout(() => {
+            modal.classList.add('opacity-100');
+            modalContent.classList.remove('scale-95', 'opacity-0');
+            modalContent.classList.add('scale-100', 'opacity-100');
+        }, 10); 
+    };
+
+    const closeModal = () => {
+        // Reverse the content transition
+        modalContent.classList.remove('scale-100', 'opacity-100');
+        modalContent.classList.add('scale-95', 'opacity-0');
+        
+        // Hide the backdrop after the content transition finishes (300ms)
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('opacity-100');
+        }, 300); 
+    };
+
+    // Trigger modal on page load after a 1-second delay for better user experience
+    window.addEventListener('load', () => {
+        setTimeout(openModal, 1000); 
+    });
+
+    // Close modal when clicking outside the content (on the backdrop)
+    modal.addEventListener('click', (e) => {
+        if (e.target.id === 'announcement-modal') {
+            closeModal();
+        }
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.slider-track');
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const nextButton = document.querySelector('.next-button');
+    const prevButton = document.querySelector('.prev-button');
+    const dotsContainer = document.querySelector('.slider-dots');
+    const dots = Array.from(document.querySelectorAll('.dot'));
+
+    // Configuration
+    const logosPerView = 4; // Number of logos visible at once
+    const totalLogos = slides.length;
+    // The number of steps you can take. This should correspond to the number of dots.
+    // Math.ceil is the correct approach here.
+    const maxSteps = Math.ceil(totalLogos / logosPerView); 
+    let currentStep = 0;
+
+    // Function to move the slider
+    const moveSlider = (step) => {
+        // Ensure the step is within bounds
+        if (step < 0) {
+            currentStep = maxSteps - 1; // Loop back to the end
+        } else if (step >= maxSteps) {
+            currentStep = 0; // Loop back to the start
+        } else {
+            currentStep = step;
+        }
+
+        // Calculate the translation distance. 
+        // The track contains ALL slides. We move a portion equal to the logosPerView relative to the total number of slides.
+        // Example: 4 logos, 4 slides. totalLogos / logosPerView = 1. Moving 100/1 * 0% = 0%.
+        // Example: 8 logos, 4 logos per view. maxSteps = 2. Step 1 moves -1 * (100 / 2) = -50%
+        // The original logic was actually correct for the 'maxSteps' count.
+        const translateValue = -(currentStep * (100 / maxSteps)); 
+        track.style.transform = `translateX(${translateValue}%)`;
+
+        updateDots();
+    };
+
+    // Function to update the active dot
+    const updateDots = () => {
+        dots.forEach(dot => dot.classList.remove('active'));
+        // FIX 4: Simplified and ensured correct dot is activated based on the current step.
+        if (dots[currentStep]) {
+            dots[currentStep].classList.add('active');
+        }
+    };
+
+    // Event Listeners for Buttons
+    nextButton.addEventListener('click', () => {
+        moveSlider(currentStep + 1);
+    });
+
+    prevButton.addEventListener('click', () => {
+        moveSlider(currentStep - 1);
+    });
+
+    // Event Listeners for Dots
+    dotsContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('dot')) {
+            const slideIndex = parseInt(e.target.getAttribute('data-slide'));
+            moveSlider(slideIndex);
+        }
+    });
+
+    // Initial state setup
+    updateDots();
+});
+</script>
+    
+    <footer id="contact" class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12 border-b border-gray-700 pb-10">
+                
+              
+                <div class="col-span-4 md:col-span-1">
+                    <h3 class="text-2xl font-extrabold text-primary-blue mb-4"></h3>
+                    <p class="text-gray-400 mb-6">A balanced, broad, and meaningful education.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 mr-3 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            +973 77476666
+                        </div>
+                        <div class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 mr-3 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            ahliaschool@ahlia.edu.bh
+                        </div>
+                        <div class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 mr-3 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            View Map & Directions
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#academics" class="hover:text-primary-blue transition">Academic Programs</a></li>
+                        <li><a href="/admissions.html" class="hover:text-primary-blue transition">Admission Guide</a></li>
+                        <li><a href="/calendar.html" class="hover:text-primary-blue transition">Academic Calendar</a></li>
+                        <li><a href="/careers.html" class="hover:text-primary-blue transition">Careers</a></li>
+                    </ul>
+                </div>
+
+                
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Resources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/portal.html" class="hover:text-primary-blue transition">Student Portal</a></li>
+                        <li><a href="/staff.html" class="hover:text-primary-blue transition">Staff Directory</a></li>
+                        <li><a href="/policy.html" class="hover:text-primary-blue transition">School Policy</a></li>
+                        <li><a href="/contact.html" class="hover:text-primary-blue transition">Contact Us</a></li>
+                    </ul>
+                </div>
+
+               
+                <div class="col-span-4 md:col-span-1">
+                    <h4 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe for the latest news and updates.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email address" class="p-3 rounded-l-lg w-full text-gray-900 focus:outline-none" required>
+                        <button type="submit" class="bg-success-green text-white p-3 rounded-r-lg hover:bg-green-600 transition">Go</button>
+                    </form>
+                </div>
+
+            </div>
+
+            
+            <div class="text-center text-gray-500 text-sm pt-4">
+                © 2025 Ahlia School. All rights reserved. | Balanced, Broad, and Meaningful.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
